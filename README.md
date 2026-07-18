@@ -8,6 +8,8 @@ Static Paddle checkout page for Pitch Changer for YouTube.
 - Weekly price: `pri_01kxtznxnrvrypjknbww2abarw`
 - Annual price: `pri_01kxtzs8qz31053wbx1245sywf`
 - Lifetime price: `pri_01kxtztt3bp295ya3kxxtwzndx`
+- API endpoint for Paddle webhooks: `/api/paddle-webhook`
+- API endpoint to check paid access: `/api/check-access?email=user@example.com`
 
 ## Test card
 
@@ -32,3 +34,20 @@ Static Paddle checkout page for Pitch Changer for YouTube.
 - Replace sandbox price IDs with live price IDs.
 - Set `PADDLE_ENVIRONMENT` in `app.js` to `production`.
 - Add webhook handling so paid customers unlock premium access in the extension.
+
+## Unlock premium automatically
+
+1. Create a Supabase project.
+2. Open `SQL Editor` and run `supabase-schema.sql`.
+3. In Vercel, add these environment variables:
+   - `SUPABASE_URL`
+   - `SUPABASE_SERVICE_ROLE_KEY`
+   - `PADDLE_WEBHOOK_SECRET_KEY`
+   - `PADDLE_WEBHOOK_TOLERANCE_SECONDS` with value `300`
+4. Redeploy the Vercel project.
+5. In Paddle sandbox, create a notification destination:
+   - URL: `https://pitch-changer-checkout-3dpe.vercel.app/api/paddle-webhook`
+   - Events: `transaction.completed`, `subscription.created`, `subscription.activated`, `subscription.updated`, `subscription.canceled`, `subscription.past_due`
+6. Copy the webhook secret from Paddle into `PADDLE_WEBHOOK_SECRET_KEY` in Vercel.
+7. Make another test purchase with an email filled in on the checkout page.
+8. Check the Supabase `customers` table. The buyer email should appear as active.

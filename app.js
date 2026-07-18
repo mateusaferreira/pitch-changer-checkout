@@ -109,10 +109,18 @@ function openCheckout(planKey) {
     return;
   }
 
+  const emailInput = document.getElementById("emailInput");
+  const email = emailInput.value.trim().toLowerCase();
+
+  if (!email || !email.includes("@")) {
+    emailInput.focus();
+    setStatus("Enter your email before opening checkout. This email unlocks your purchase later.");
+    return;
+  }
+
   const successUrl = new URL("success.html", window.location.href);
   successUrl.searchParams.set("plan", planKey);
 
-  const email = document.getElementById("emailInput").value.trim();
   const checkoutOptions = {
     settings: {
       displayMode: "overlay",
@@ -130,13 +138,12 @@ function openCheckout(planKey) {
     customData: {
       app: "pitch-changer-for-youtube",
       plan: planKey,
+      email,
       source: "pricing-page"
     }
   };
 
-  if (email && email.includes("@")) {
-    checkoutOptions.customer = { email };
-  }
+  checkoutOptions.customer = { email };
 
   Paddle.Checkout.open(checkoutOptions);
 }
