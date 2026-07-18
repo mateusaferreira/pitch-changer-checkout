@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pitch Changer for YouTube - Pricing</title>
+    <meta name="description" content="Change pitch and speed on YouTube in real time with Pitch Changer for YouTube.">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+  </head>
+  <body>
+    <main class="page">
+      <section class="product">
+        <div class="copy">
+          <p class="eyebrow">Chrome extension for musicians</p>
+          <h1>Pitch Changer for YouTube</h1>
+          <p class="lead">
+            Change the key and speed of YouTube songs in real time. Practice in your range,
+            slow hard parts down, and keep the music playing.
+          </p>
+        </div>
+
+        <div class="preview" aria-label="Extension preview">
+          <div class="preview-top">
+            <span></span>
+            <strong>Pitch Changer</strong>
+          </div>
+          <div class="preview-line">
+            <label>Pitch</label>
+            <output>+1/2 step</output>
+          </div>
+          <div class="preview-slider">
+            <span style="width: 56%"></span>
+          </div>
+          <div class="preview-buttons">
+            <span>- Half step</span>
+            <span>Normal</span>
+            <span>+ Half step</span>
+          </div>
+          <div class="preview-line">
+            <label>Speed</label>
+            <output>0.75x</output>
+          </div>
+          <div class="preview-slider">
+            <span style="width: 38%"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="pricing" aria-labelledby="pricingTitle">
+        <div class="pricing-head">
+          <div>
+            <p class="eyebrow">Sandbox checkout</p>
+            <h2 id="pricingTitle">Choose your plan</h2>
+          </div>
+          <label class="email-box">
+            <span>Email for checkout</span>
+            <input id="emailInput" type="email" autocomplete="email" placeholder="you@example.com">
+          </label>
+        </div>
+
+        <div class="plans">
+          <article class="plan">
+            <div>
+              <span class="plan-name">Weekly</span>
+              <strong id="weeklyPrice">R$19.90</strong>
+              <p>Try without a long commitment.</p>
+            </div>
+            <button type="button" data-plan="weekly">Start weekly</button>
+          </article>
+
+          <article class="plan featured">
+            <span class="badge">Best value</span>
+            <div>
+              <span class="plan-name">Annual</span>
+              <strong id="annualPrice">R$119.90</strong>
+              <p>Best price for regular practice.</p>
+            </div>
+            <button type="button" data-plan="annual">Get annual</button>
+          </article>
+
+          <article class="plan">
+            <div>
+              <span class="plan-name">Lifetime</span>
+              <strong id="lifetimePrice">R$429.00</strong>
+              <p>Pay once and keep access.</p>
+            </div>
+            <button type="button" data-plan="lifetime">Buy lifetime</button>
+          </article>
+        </div>
+
+        <p id="checkoutStatus" class="status">
+          Test mode is active. Use Paddle test card 4242 4242 4242 4242, CVC 100.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Pitch Changer for YouTube</span>
+      <nav aria-label="Legal pages">
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="refund.html">Refunds</a>
+      </nav>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
